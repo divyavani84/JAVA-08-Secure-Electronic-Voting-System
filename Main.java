@@ -14,7 +14,6 @@ public class Main {
             "jdbc:mysql://localhost:3306/secure_voting";
     static final String DB_USER = "root";
 
-    // Replace this with your own MySQL password.
     static final String DB_PASSWORD = "Divya_vani@123";
 
     static final String[] CANDIDATES = {
@@ -196,7 +195,7 @@ public class Main {
             conn.setAutoCommit(false);
 
             try {
-                // Lock this voter's row to prevent simultaneous duplicate votes.
+        
                 try (PreparedStatement check = conn.prepareStatement(
                         "SELECT has_voted FROM voters WHERE voter_name = ? FOR UPDATE")) {
                     check.setString(1, loggedInVoter);
